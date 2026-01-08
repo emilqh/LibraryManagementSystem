@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/LMS/">
+    <Project Path="LMS.BusinessLogicLayer/LMS.BusinessLogicLayer.csproj" Id="4612b7ea-9d64-4c47-964d-dcbea8d2b356" />
+    <Project Path="LMS.ConsoleUI/LMS.ConsoleUI.csproj" Id="344b76d1-a6bd-461d-8a70-5203b4f824e1" />
+    <Project Path="LMS.DataAccessLayer/LMS.DataAccessLayer.csproj" />
+  </Folder>
+</Solution>
