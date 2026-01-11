@@ -25,7 +25,7 @@ namespace LMS.DataAccessLayer
         private const int ISACTIVE_START = MEMBERSHIP_DATE_START + MEMBERSHIP_DATE_LENGTH;
 
         //Define a member line in members.txt
-        private const string DATE_FORMAT = "dd/MM/yyyy";
+        private const string DATE_FORMAT = "dd.MM.yyyy";
 
         private Member ParseLineToMember(string line)
         {

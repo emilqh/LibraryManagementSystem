@@ -56,6 +56,17 @@ namespace LMS.BusinessLogicLayer.Services
 
         public void UpdateBook(int id, UpdateBookDto updateBookDto)
         {
+            ArgumentNullException.ThrowIfNull(updateBookDto);
+
+            if (string.IsNullOrWhiteSpace(updateBookDto.Title))
+                throw new Exception("Book title is required.");
+
+            if (updateBookDto.Title.Length > 30)
+                throw new Exception("Book title cannot exceed 30 characters.");
+
+            if (updateBookDto.Author.Length > 25)
+                throw new Exception("Author name cannot exceed 25 characters.");
+
             Book book = _bookRepository.GetById(id);
 
             if (book is null)
@@ -63,8 +74,8 @@ namespace LMS.BusinessLogicLayer.Services
                 return;
             }
 
-            book.Title = updateBookDto.Title;
-            book.Author = updateBookDto.Author;
+            book.Title = updateBookDto.Title.Trim();
+            book.Author = updateBookDto.Author.Trim();
             book.CategoryId = updateBookDto.CategoryId;
             book.IsAvailable = updateBookDto.IsAvailable;
 

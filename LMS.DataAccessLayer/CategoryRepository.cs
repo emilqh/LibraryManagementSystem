@@ -37,7 +37,10 @@ namespace LMS.DataAccessLayer
             return category;
         }
 
-        private const string PATH = "Data\\categories.txt";
+        //private const string PATH = "Data\\categories.txt";
+        private static readonly string PATH =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "categories.txt");
+
         public CategoryRepository()
         {
             //Setup path ("\Data\categories.txt")
@@ -78,7 +81,7 @@ namespace LMS.DataAccessLayer
             string line =
                 newId.ToString().PadLeft(ID_LENGTH, '0') +
                 category.Name.PadRight(NAME_LENGTH) +
-                category.Description.PadRight(DESCRIPTION_LENGTH);
+                (category.Description ?? string.Empty).PadRight(DESCRIPTION_LENGTH);
 
             if (line.Length != TOTAL_LENGTH)
             {
@@ -121,7 +124,7 @@ namespace LMS.DataAccessLayer
 
                 if (line.Length != TOTAL_LENGTH)
                 {
-                    throw new Exception("Invalid category line legth.");
+                    throw new Exception("Invalid category line length.");
                 }
 
                 lines.Add(line);
@@ -223,7 +226,7 @@ namespace LMS.DataAccessLayer
 
                 if (line.Length != TOTAL_LENGTH)
                 {
-                    throw new Exception("Invalid category line legth.");
+                    throw new Exception("Invalid category line length.");
                 }
 
                 lines.Add(line);
